@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listado de Reservas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Listado de Reservas</h1>
+        <a th:href="@{/reservas/create}" class="btn btn-primary">Crear Nueva Reserva</a>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Servicio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="reserva : ${reservas}">
+                    <td th:text="${reserva.id}"></td>
+                    <td th:text="${reserva.usuario}"></td>
+                    <td th:text="${reserva.reserva}"></td>
+                    <td th:text="${reserva.servicio}"></td>
+                    <td>
+                        <a th:href="@{/reservas/edit/{id}(id=${reserva.id})}" class="btn btn-warning">Editar</a>
+                        <a th:href="@{/reservas/delete/{id}(id=${reserva.id})}" class="btn btn-danger" th:onclick="'return confirm(\'¿Estás seguro de eliminar esta reserva?\')'">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

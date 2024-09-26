@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Reserva</title>
+</head>
+<body>
+    <h1>Crear Reserva</h1>
+    <form th:action="@{/reservas}" th:object="${reservation}" method="post">
+        
+        <div>
+            <label for="usuario">Ingresar Usuario:</label>
+            <input type="text" id="usuario" th:field="*{usuario}" placeholder="Ingrese el nombre de usuario" required />
+        </div>
+        
+        <div>
+            <label for="reserva">Reserva:</label>
+            <input type="date" id="reserva" th:field="*{reserva}" required />
+        </div>
+        
+        <div>
+            <label for="servicio">Servicio:</label>
+            <select id="servicio" th:field="*{servicio}" required>
+                <option value="" disabled selected>Seleccione un servicio</option>
+                <option value="Internista">Internista</option>
+                <option value="Oftalmologia">Oftalmologia</option>
+                <option value="Pediatria">Pediatria</option>
+                <option value="Dermatologia">Dermatologia</option>
+                <!-- Agrega más opciones según tus necesidades -->
+            </select>
+        </div>
+        
+        <div>
+            <button type="submit">Crear Reserva</button>
+        </div>
+    </form>
+</body>
+</html>
