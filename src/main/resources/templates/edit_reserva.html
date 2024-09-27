@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Reserva</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Editar Reserva</h1>
+    <div class="container mt-5">
+        <h1 class="text-center">Editar Reserva</h1>
         <form th:action="@{/reservas/edit/{id}(id=${reservation.id})}" th:object="${reservation}" method="post">
             <div class="form-group">
                 <label for="usuario">Usuario:</label>
-                <input type="text" th:field="*{usuario}" class="form-control" id="nombre" required/>
+                <input type="text" th:field="*{usuario}" class="form-control" id="usuario" placeholder="Ingrese el nombre de usuario" required />
             </div>
             <div class="form-group">
-                <label for="reserva">Reserva:</label>
-                <input type="date" th:field="*{reserva}" class="form-control" id="fecha" required/>
+                <label for="reserva">Fecha de Reserva:</label>
+                <input type="date" th:field="*{reserva}" class="form-control" id="reserva" required />
             </div>
-            <button type="submit" class="btn btn-success">Actualizar Reserva</button>
-            <a th:href="@{/reservas}" class="btn btn-secondary">Cancelar</a>
+            <div class="form-group">
+                <label for="servicio">Servicio:</label>
+                <select th:field="*{servicio}" class="form-control" id="servicio" required>
+                    <option value="" disabled selected>Seleccione un servicio</option>
+                    <option value="Internista">Internista</option>
+                    <option value="Oftalmologia">Oftalmología</option>
+                    <option value="Pediatria">Pediatría</option>
+                    <option value="Dermatologia">Dermatología</option>
+                    <!-- Agrega más opciones según tus necesidades -->
+                </select>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-success">Actualizar Reserva</button>
+                <a th:href="@{/reservas}" class="btn btn-secondary">Cancelar</a>
+            </div>
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
